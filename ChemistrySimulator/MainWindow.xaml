@@ -20,8 +20,31 @@
             <ColumnDefinition Width="8*" />
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="SideBar" Background="{StaticResource Sidebar}">
-            <Label Content="SideBar Area" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Grid x:Name="SideBar">
+            <StackPanel Background="{StaticResource Sidebar}">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".8" Duration="0:0:0.7" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" DecelerationRatio=".8" Duration="0:0:0.7" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+            </StackPanel>
         </Grid>
 
         <Grid x:Name="Viewer" Grid.Column="1">
