@@ -1,2 +1,3 @@
-# ChemistryNeutralizationSimulator
-Neutralization reaction simulator
+# Chemistry Neutralization Simulator
+
+Project files will be uploaded soon..
