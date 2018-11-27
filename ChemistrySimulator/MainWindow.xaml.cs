@@ -29,20 +29,16 @@ namespace ChemistrySimulator
             InitializeComponent();
         }
 
-        void renewBeakerStatus()
-        {
+        // TODO: Text wraping required
+        void renewBeakerStatus() {
             BeakerStatus.Content = defaultBeaker.getTotalBeakerVolume().ToString() + " mL";
         }
-
-        // For testing purpose, 10 mL will be added. must take user's input through any possible methods
 
         void Beaker_MouseEnterEvent(object sender, MouseEventArgs e)
         {
             BeakerStatus.Content = "";
             for(int i=0;i<6;i++)
-            {
                 BeakerStatus.Content += defaultBeaker.getComponentVolume(i).ToString() + " ";
-            }
         }
 
         void Beaker_MouseLeaveEvent(object sender, MouseEventArgs e)
@@ -52,23 +48,39 @@ namespace ChemistrySimulator
 
         void HClBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
-            defaultBeaker.addBeakerComponent(ChemNotation.ion_H, 10);
-            defaultBeaker.addBeakerComponent(ChemNotation.ion_Cl, 10);
+            UserInputPrompt prompt = new UserInputPrompt("How Much?");
+
+            // Every passed value(propmpt.userInputText) is proved convertible & positive
+            if (prompt.ShowDialog() == true) {
+                defaultBeaker.addBeakerComponent(ChemNotation.ion_H, Convert.ToSingle(prompt.userInputText));
+                defaultBeaker.addBeakerComponent(ChemNotation.ion_Cl, Convert.ToSingle(prompt.userInputText));
+            }
             renewBeakerStatus();
+            defaultBeaker.neutralize(defaultBeaker);
         }
 
         void NaOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
-            defaultBeaker.addBeakerComponent(ChemNotation.ion_Na, 10);
-            defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, 10);
+            UserInputPrompt prompt = new UserInputPrompt("How much?");
+
+            if(prompt.ShowDialog() == true) {
+                defaultBeaker.addBeakerComponent(ChemNotation.ion_Na, Convert.ToSingle(prompt.userInputText));
+                defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, Convert.ToSingle(prompt.userInputText));
+            }
             renewBeakerStatus();
+            defaultBeaker.neutralize(defaultBeaker);
         }
 
         void KOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e )
         {
-            defaultBeaker.addBeakerComponent(ChemNotation.ion_K, 10);
-            defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, 10);
+            UserInputPrompt prompt = new UserInputPrompt("How much?");
+
+            if(prompt.ShowDialog() == true) {
+                defaultBeaker.addBeakerComponent(ChemNotation.ion_K, Convert.ToSingle(prompt.userInputText));
+                defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, Convert.ToSingle(prompt.userInputText));
+            }
             renewBeakerStatus();
+            defaultBeaker.neutralize(defaultBeaker);
         }
     }
 }

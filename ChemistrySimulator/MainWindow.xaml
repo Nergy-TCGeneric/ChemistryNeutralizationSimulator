@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChemistrySimulator"
         mc:Ignorable="d"
-        Title="Chemistry Simulator" Height="450" Width="800">
+        Title="Chemistry:: neutralization simulator" Height="450" Width="800">
 
     <Window.Resources>
         <Brush x:Key="Background">#F2F2F2</Brush>
+        <Brush x:Key="Sidebar">#686868</Brush>
         <BitmapImage x:Key="Beaker" UriSource="/images/beaker.png" />
         <BitmapImage x:Key="anotherBeaker" UriSource="/images/anotherbeaker.png" />
     </Window.Resources>
@@ -19,7 +20,7 @@
             <ColumnDefinition Width="8*" />
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="SideBar">
+        <Grid x:Name="SideBar" Background="{StaticResource Sidebar}">
             <Label Content="SideBar Area" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
         </Grid>
 
