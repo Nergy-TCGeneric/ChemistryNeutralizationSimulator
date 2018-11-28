@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace ChemistrySimulator
 {
@@ -30,23 +31,23 @@ namespace ChemistrySimulator
         }
 
         // TODO: Text wraping required
-        void renewBeakerStatus() {
+        private void renewBeakerStatus() {
             BeakerStatus.Content = defaultBeaker.getTotalBeakerVolume().ToString() + " mL";
         }
 
-        void Beaker_MouseEnterEvent(object sender, MouseEventArgs e)
+        private void Beaker_MouseEnterEvent(object sender, MouseEventArgs e)
         {
             BeakerStatus.Content = "";
             for(int i=0;i<6;i++)
                 BeakerStatus.Content += defaultBeaker.getComponentVolume(i).ToString() + " ";
         }
 
-        void Beaker_MouseLeaveEvent(object sender, MouseEventArgs e)
+        private void Beaker_MouseLeaveEvent(object sender, MouseEventArgs e)
         {
             renewBeakerStatus();
         }
 
-        void HClBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
+        private void HClBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
             UserInputPrompt prompt = new UserInputPrompt("How Much?");
 
@@ -59,7 +60,7 @@ namespace ChemistrySimulator
             defaultBeaker.neutralize(defaultBeaker);
         }
 
-        void NaOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
+        private void NaOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
             UserInputPrompt prompt = new UserInputPrompt("How much?");
 
@@ -71,7 +72,7 @@ namespace ChemistrySimulator
             defaultBeaker.neutralize(defaultBeaker);
         }
 
-        void KOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e )
+        private void KOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e )
         {
             UserInputPrompt prompt = new UserInputPrompt("How much?");
 
@@ -81,6 +82,54 @@ namespace ChemistrySimulator
             }
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
+        }
+
+        private void showButtonClickEvent(object sender, EventArgs e)
+        {
+            showHideMenu("showSlidemenu", hideButton, showButton, slidemenu);
+        }
+
+        private void hideButtonClickEvent(object sender, EventArgs e)
+        {
+            showHideMenu("hideSlidemenu", hideButton, showButton, slidemenu);
+        }
+
+        private void showHideMenu(string storyboard, Button hideBtn, Button showBtn, StackPanel pnl)
+        {
+            Storyboard sb = Resources[storyboard] as Storyboard;
+            sb.Begin(pnl);
+            
+            if(storyboard.Contains("show"))
+            {
+                hideBtn.Visibility = Visibility.Visible;
+                showBtn.Visibility = Visibility.Hidden;
+            }
+            else if(storyboard.Contains("hide"))
+            {
+                hideBtn.Visibility = Visibility.Hidden;
+                showBtn.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void graphButtonClickEvent(object sender, EventArgs e)
+        {
+            // Bad approach, need improvement(Only one instance allowed)
+            GraphWindow graph = new GraphWindow();
+            graph.Show();
+        }
+        
+        private void tableButtonClickEvent(object sender, EventArgs e)
+        {
+            // Bad approach, need improvement(Only one instance allowed)
+            TableWindow table = new TableWindow();
+            table.Show();
+        }
+
+        private void configButtonClickEvent(object sender, EventArgs e)
+        {
+            ConfigWindow config = new ConfigWindow(this);
+            config.Show();
+            this.Hide();
         }
     }
 }
