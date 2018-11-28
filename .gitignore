@@ -1,3 +1,5 @@
 *.sln
 /.vs
 /ChemistrySimulator/obj
+/.vs/ChemistrySimulator/v15
+/bin/Debug
