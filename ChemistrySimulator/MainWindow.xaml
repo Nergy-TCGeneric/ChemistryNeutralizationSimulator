@@ -12,38 +12,40 @@
         <Brush x:Key="Sidebar">#686868</Brush>
         <BitmapImage x:Key="Beaker" UriSource="/images/beaker.png" />
         <BitmapImage x:Key="anotherBeaker" UriSource="/images/anotherbeaker.png" />
+        
+        <Storyboard x:Key="showSlidemenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-50,0,0,0" To="0,0,0,0" DecelerationRatio=".7" Duration="0:0:0.7" />
+        </Storyboard>
+        <Storyboard x:Key="hideSlidemenu">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-50,0,0,0" DecelerationRatio=".7" Duration="0:0:0.7" />
+        </Storyboard>
     </Window.Resources>
     
     <Grid Background="{StaticResource Background}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="8*" />
         </Grid.ColumnDefinitions>
 
-        <Grid x:Name="SideBar">
-            <StackPanel Background="{StaticResource Sidebar}">
-                <StackPanel.Style>
-                    <Style TargetType="StackPanel">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-150,0,0,0" To="0,0,0,0" DecelerationRatio=".8" Duration="0:0:0.7" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-150,0,0,0" DecelerationRatio=".8" Duration="0:0:0.7" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </StackPanel.Style>
+        <Grid>
+            <StackPanel Name="slidemenu" Panel.ZIndex="2" Orientation="Horizontal" Margin="-50, 0,0,0"> 
+                <Grid Width="50" Background="{StaticResource Sidebar}">
+                    <StackPanel>
+                        <Button>
+                            <Image Source="/images/statistics.png"/>
+                        </Button>
+                        <Button>
+                            <Image Source="/images/table-grid.png"/>
+                        </Button>
+                        <Button>
+                            <Image Source="/images/config.png"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid VerticalAlignment="Center" Height="50">
+                    <Button Name="showButton" Click="showButtonClickEvent"> →</Button>
+                    <Button Name="hideButton" Visibility="Hidden" Click="hideButtonClickEvent"> ← </Button>
+                </Grid>
             </StackPanel>
         </Grid>
 

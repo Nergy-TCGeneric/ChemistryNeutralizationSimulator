@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace ChemistrySimulator
 {
@@ -81,6 +82,33 @@ namespace ChemistrySimulator
             }
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
+        }
+
+        private void showButtonClickEvent(object sender, EventArgs e)
+        {
+            showHideMenu("showSlidemenu", hideButton, showButton, slidemenu);
+        }
+
+        private void hideButtonClickEvent(object sender, EventArgs e)
+        {
+            showHideMenu("hideSlidemenu", hideButton, showButton, slidemenu);
+        }
+
+        private void showHideMenu(string storyboard, Button hideBtn, Button showBtn, StackPanel pnl)
+        {
+            Storyboard sb = Resources[storyboard] as Storyboard;
+            sb.Begin(pnl);
+            
+            if(storyboard.Contains("show"))
+            {
+                hideBtn.Visibility = Visibility.Visible;
+                showBtn.Visibility = Visibility.Hidden;
+            }
+            else if(storyboard.Contains("hide"))
+            {
+                hideBtn.Visibility = Visibility.Hidden;
+                showBtn.Visibility = Visibility.Visible;
+            }
         }
     }
 }

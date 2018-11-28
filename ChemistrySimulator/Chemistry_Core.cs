@@ -30,8 +30,8 @@ namespace ChemistrySimulator
         public float getTotalBeakerVolume()
         {
             return beakerComponents[ChemNotation.ion_Cl]
-                + beakerComponents[ChemNotation.ion_Na]
-                + beakerComponents[ChemNotation.ion_K];
+                + beakerComponents[ChemNotation.ion_K]
+                + beakerComponents[ChemNotation.ion_Na];
         } 
 
         public float getComponentVolume(int component) {
