@@ -31,20 +31,20 @@
             <StackPanel Name="slidemenu" Panel.ZIndex="2" Orientation="Horizontal" Margin="-50, 0,0,0"> 
                 <Grid Width="50" Background="{StaticResource Sidebar}">
                     <StackPanel>
-                        <Button>
+                        <Button Name="graph" Click="graphButtonClickEvent">
                             <Image Source="/images/statistics.png"/>
                         </Button>
-                        <Button>
+                        <Button Name="table" Click="tableButtonClickEvent">
                             <Image Source="/images/table-grid.png"/>
                         </Button>
-                        <Button>
+                        <Button Name="config" Click="configButtonClickEvent">
                             <Image Source="/images/config.png"/>
                         </Button>
                     </StackPanel>
                 </Grid>
                 <Grid VerticalAlignment="Center" Height="50">
-                    <Button Name="showButton" Click="showButtonClickEvent"> →</Button>
-                    <Button Name="hideButton" Visibility="Hidden" Click="hideButtonClickEvent"> ← </Button>
+                    <Button Name="showButton" Click="showButtonClickEvent" BorderThickness="0"> →</Button>
+                    <Button Name="hideButton" Visibility="Hidden" Click="hideButtonClickEvent" BorderThickness="0"> ← </Button>
                 </Grid>
             </StackPanel>
         </Grid>
