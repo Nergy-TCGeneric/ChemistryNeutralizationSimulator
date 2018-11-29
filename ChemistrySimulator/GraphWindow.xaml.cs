@@ -25,49 +25,40 @@ namespace ChemistrySimulator
         public GraphWindow(Beaker beaker)
         {
             InitializeComponent();
-
-            // How to update those observable values?
-            var ion_H = new ObservableValue(0);
-            var ion_Cl = new ObservableValue(0);
-            var ion_K = new ObservableValue(0);
-            var ion_Na = new ObservableValue(0);
-            var ion_OH = new ObservableValue(0);
-
             SeriesCollection = new SeriesCollection
             {
-                // Need to figure out how to update chemicals' values..
                  new LineSeries
                  {
                      Title = "H+",
-                     Values = new ChartValues<ObservableValue> { ion_H },
+                     Values = new ChartValues<ObservableValue> { },
                      LineSmoothness = 0
                  },
 
                  new LineSeries
                  {
                      Title="Cl-",
-                     Values = new ChartValues<ObservableValue> { ion_Cl },
+                     Values = new ChartValues<ObservableValue> { },
                      LineSmoothness = 0
                  },
 
                  new LineSeries
                  {
                      Title="K+",
-                     Values = new ChartValues<ObservableValue> { ion_K },
+                     Values = new ChartValues<ObservableValue> { },
                      LineSmoothness = 0
                  },
 
                  new LineSeries
                  {
                      Title="Na+",
-                     Values = new ChartValues<ObservableValue> { ion_Na },
+                     Values = new ChartValues<ObservableValue> { },
                      LineSmoothness = 0
                  },
 
                  new LineSeries
                  {
                      Title="OH-",
-                     Values = new ChartValues<ObservableValue> { ion_OH },
+                     Values = new ChartValues<ObservableValue> { },
                      LineSmoothness = 0
                  }
             };
@@ -75,10 +66,15 @@ namespace ChemistrySimulator
             // Notice. this should observe order as describled in 'chemical notation'
             Labels = new[] { "H+", "Cl-", "K+", "Na+", "OH-" };
             DataContext = this;
+
+            AddValue(ChemNotation.ion_H, 5);
         }
 
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
 
+        public void AddValue(int ChemNotation, float Value) {
+            SeriesCollection[ChemNotation].Values.Add(new ObservableValue(Value));
+        }
     }
 }

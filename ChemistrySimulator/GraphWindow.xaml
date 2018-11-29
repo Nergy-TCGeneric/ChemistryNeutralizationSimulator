@@ -6,8 +6,13 @@
         xmlns:local="clr-namespace:ChemistrySimulator"
         mc:Ignorable="d"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="GraphWindow" Height="450" Width="800">
+        Icon="atom.ico"
+        Title="Chemistry:: Graph" Height="450" Width="800">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" DisableAnimations="True" />
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" DisableAnimations="True">
+            <lvc:CartesianChart.ChartLegend>
+                <lvc:DefaultLegend BulletSize="10" Background="AliceBlue"/>
+            </lvc:CartesianChart.ChartLegend>
+        </lvc:CartesianChart>
     </Grid>
 </Window>
