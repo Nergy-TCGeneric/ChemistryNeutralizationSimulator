@@ -8,6 +8,6 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Title="GraphWindow" Height="450" Width="800">
     <Grid>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" />
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" DisableAnimations="True" />
     </Grid>
 </Window>

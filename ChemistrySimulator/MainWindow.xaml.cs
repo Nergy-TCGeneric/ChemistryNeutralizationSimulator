@@ -114,7 +114,7 @@ namespace ChemistrySimulator
         private void graphButtonClickEvent(object sender, EventArgs e)
         {
             // Bad approach, need improvement(Only one instance allowed)
-            GraphWindow graph = new GraphWindow();
+            GraphWindow graph = new GraphWindow(defaultBeaker);
             graph.Show();
         }
         

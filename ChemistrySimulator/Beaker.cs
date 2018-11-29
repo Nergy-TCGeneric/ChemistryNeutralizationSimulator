@@ -6,35 +6,26 @@ using System.Threading.Tasks;
 
 namespace ChemistrySimulator
 {
-    public class Chemistry_Core
-    {
-
-    }
-
-    class ChemNotation
-    {
-        public const int ion_H = 0;
-        public const int ion_Cl = 1;
-        public const int ion_K = 2;
-        public const int ion_Na = 3;
-        public const int ion_OH = 4;
-        public const int H2O = 5;
-    }
-
-    class Beaker : Reaction
+    public class Beaker : Reaction
     {
         // H+, Cl-, K+, Na+, OH-, H2O, respectively.
         // All components will be initialized with default value 0
         private float[] beakerComponents = new float[6] { 0, 0, 0, 0, 0, 0 };
+
+        public Beaker()
+        {
+
+        }
 
         public float getTotalBeakerVolume()
         {
             return beakerComponents[ChemNotation.ion_Cl]
                 + beakerComponents[ChemNotation.ion_K]
                 + beakerComponents[ChemNotation.ion_Na];
-        } 
+        }
 
-        public float getComponentVolume(int component) {
+        public float getComponentVolume(int component)
+        {
             return beakerComponents[component];
         }
 
@@ -69,7 +60,7 @@ namespace ChemistrySimulator
 
         public void removeBeakerComponent(int component, float amount)
         {
-            if(getComponentVolume(component) >= amount)
+            if (getComponentVolume(component) >= amount)
             {
                 switch (component)
                 {
@@ -97,31 +88,4 @@ namespace ChemistrySimulator
             }
         }
     }
-
-    class Reaction
-    {
-        // TODO: Hadn't considered concentration - rewrite it
-        // Each value for HCl, KOH, NaOH, respectively.
-        // Notice that every ratio eventually represented in simplest interger form.
-        private int[] concentrationRatio = new int[3] { 1, 1, 1 };
-
-        public void neutralize(Beaker beaker)
-        {
-            /*
-            float H = beaker.getComponentVolume(ChemNotation.ion_H);
-            float OH = beaker.getComponentVolume(ChemNotation.ion_OH);
-
-            if(H > 0 && OH > 0)
-            {
-                float Min = Math.Min(H, OH);
-
-                // 1 : 1 Concentration (H+ : OH-)
-                beaker.removeBeakerComponent(ChemNotation.ion_H, Min);
-                beaker.removeBeakerComponent(ChemNotation.ion_OH, Min);
-                beaker.addBeakerComponent(ChemNotation.H2O, Min);
-            }
-            */
-        }
-    }
-
 }
