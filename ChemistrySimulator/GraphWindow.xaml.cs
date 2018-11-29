@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
+using LiveCharts.Defaults;
 
 namespace ChemistrySimulator
 {
@@ -19,9 +22,59 @@ namespace ChemistrySimulator
     /// </summary>
     public partial class GraphWindow : Window
     {
-        public GraphWindow()
+        public GraphWindow(Beaker beaker)
         {
             InitializeComponent();
+            SeriesCollection = new SeriesCollection
+            {
+                 new LineSeries
+                 {
+                     Title = "H+",
+                     Values = new ChartValues<ObservableValue> { },
+                     LineSmoothness = 0
+                 },
+
+                 new LineSeries
+                 {
+                     Title="Cl-",
+                     Values = new ChartValues<ObservableValue> { },
+                     LineSmoothness = 0
+                 },
+
+                 new LineSeries
+                 {
+                     Title="K+",
+                     Values = new ChartValues<ObservableValue> { },
+                     LineSmoothness = 0
+                 },
+
+                 new LineSeries
+                 {
+                     Title="Na+",
+                     Values = new ChartValues<ObservableValue> { },
+                     LineSmoothness = 0
+                 },
+
+                 new LineSeries
+                 {
+                     Title="OH-",
+                     Values = new ChartValues<ObservableValue> { },
+                     LineSmoothness = 0
+                 }
+            };
+
+            // Notice. this should observe order as describled in 'chemical notation'
+            Labels = new[] { "H+", "Cl-", "K+", "Na+", "OH-" };
+            DataContext = this;
+
+            AddValue(ChemNotation.ion_H, 5);
+        }
+
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+
+        public void AddValue(int ChemNotation, float Value) {
+            SeriesCollection[ChemNotation].Values.Add(new ObservableValue(Value));
         }
     }
 }
