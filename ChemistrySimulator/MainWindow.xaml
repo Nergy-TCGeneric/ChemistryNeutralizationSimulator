@@ -94,19 +94,19 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid>
-                    <Image VerticalAlignment="Bottom" Source="{StaticResource Beaker}" MouseEnter="Beaker_MouseEnterEvent" MouseLeave="Beaker_MouseLeaveEvent"/>
+                    <Image Panel.ZIndex="2" VerticalAlignment="Bottom" Source="{StaticResource Beaker}" MouseEnter="Beaker_MouseEnterEvent" MouseLeave="Beaker_MouseLeaveEvent"/>
                 </Grid>
 
                 <Grid Grid.Column="2">
-                    <Image VerticalAlignment="Bottom" Source="{StaticResource anotherBeaker}" MouseLeftButtonDown="HClBeaker_LeftMouseDownEvent" />
+                    <Image Panel.ZIndex="2" VerticalAlignment="Bottom" Source="{StaticResource anotherBeaker}" MouseLeftButtonDown="HClBeaker_LeftMouseDownEvent" />
                 </Grid>
 
                 <Grid Grid.Column="3">
-                    <Image VerticalAlignment="Bottom" Source="{StaticResource anotherBeaker}" MouseLeftButtonDown="NaOHBeaker_LeftMouseDownEvent"/>
+                    <Image Panel.ZIndex="2" VerticalAlignment="Bottom" Source="{StaticResource anotherBeaker}" MouseLeftButtonDown="NaOHBeaker_LeftMouseDownEvent"/>
                 </Grid>
 
                 <Grid Grid.Column="4">
-                    <Image VerticalAlignment="Bottom" Source="{StaticResource anotherBeaker}" MouseLeftButtonDown="KOHBeaker_LeftMouseDownEvent" />
+                    <Image Panel.ZIndex="2" VerticalAlignment="Bottom" Source="{StaticResource anotherBeaker}" MouseLeftButtonDown="KOHBeaker_LeftMouseDownEvent" />
                 </Grid>
             </Grid>
         </Grid>

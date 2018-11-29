@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace ChemistrySimulator
 {
@@ -24,4 +26,9 @@ namespace ChemistrySimulator
             InitializeComponent();
         }
     }
+}
+
+namespace Wpf.CartesianChart.PointShapeLine
+{
+    
 }
