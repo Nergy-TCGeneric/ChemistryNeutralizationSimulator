@@ -1,4 +1,6 @@
 *.sln
 /.vs
-/obj
-Debug/
+ChemistrySimulator/obj
+ChemistrySimulator/.vs/**
+ChemistrySimulator/bin/**
+ChemistrySimulator/obj/**

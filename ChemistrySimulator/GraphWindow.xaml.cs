@@ -66,8 +66,6 @@ namespace ChemistrySimulator
             // Notice. this should observe order as describled in 'chemical notation'
             Labels = new[] { "H+", "Cl-", "K+", "Na+", "OH-" };
             DataContext = this;
-
-            AddValue(ChemNotation.ion_H, 5);
         }
 
         public SeriesCollection SeriesCollection { get; set; }
