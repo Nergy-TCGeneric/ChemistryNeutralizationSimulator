@@ -23,5 +23,18 @@ namespace ChemistrySimulator
         {
             InitializeComponent();
         }
+
+        // Follow the order describled at 'ChemicalNotation' class.
+        public void createTableCell(int experiCount, float[] ionAmount)
+        {
+            ChemistryTable.Rows.Add(new TableRow());
+            TableRow currentRow = ChemistryTable.Rows[ChemistryTable.Rows.Count - 1];
+
+            // TODO: For readability, different background color for expericount rows are required.
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(experiCount.ToString()))));
+            for(int i=0;i<ionAmount.Length;i++) {
+                currentRow.Cells.Add(new TableCell(new Paragraph(new Run(ionAmount[i].ToString() + "N"))));
+            }
+        }
     }
 }
