@@ -51,11 +51,18 @@ namespace ChemistrySimulator
         {
             UserInputPrompt prompt = new UserInputPrompt("How Much?");
 
-            // Every passed value(propmpt.userInputText) is proved convertible & positive
-            if (prompt.ShowDialog() == true) {
-                defaultBeaker.addBeakerComponent(ChemNotation.ion_H, Convert.ToSingle(prompt.userInputText));
-                defaultBeaker.addBeakerComponent(ChemNotation.ion_Cl, Convert.ToSingle(prompt.userInputText));
-            }
+			try
+			{
+				// Every passed value(propmpt.userInputText) is proved convertible & positive
+				if (prompt.ShowDialog() == true) {
+					defaultBeaker.addBeakerComponent(ChemNotation.ion_Cl, Convert.ToSingle(prompt.userInputText));
+				}
+			}
+			catch (OverflowException)
+			{
+				MessageBox.Show("Number is too big!", "Oops!");
+			}
+
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
         }
@@ -64,10 +71,18 @@ namespace ChemistrySimulator
         {
             UserInputPrompt prompt = new UserInputPrompt("How much?");
 
-            if(prompt.ShowDialog() == true) {
-                defaultBeaker.addBeakerComponent(ChemNotation.ion_Na, Convert.ToSingle(prompt.userInputText));
-                defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, Convert.ToSingle(prompt.userInputText));
-            }
+			try
+			{
+				if (prompt.ShowDialog() == true) {
+					defaultBeaker.addBeakerComponent(ChemNotation.ion_Na, Convert.ToSingle(prompt.userInputText));
+				}
+			}
+
+			catch (OverflowException)
+			{
+				MessageBox.Show("Number is too big!", "Oops!");
+			}
+
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
         }
@@ -76,10 +91,17 @@ namespace ChemistrySimulator
         {
             UserInputPrompt prompt = new UserInputPrompt("How much?");
 
-            if(prompt.ShowDialog() == true) {
-                defaultBeaker.addBeakerComponent(ChemNotation.ion_K, Convert.ToSingle(prompt.userInputText));
-                defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, Convert.ToSingle(prompt.userInputText));
-            }
+			try
+			{
+				if (prompt.ShowDialog() == true) {
+					defaultBeaker.addBeakerComponent(ChemNotation.ion_K, Convert.ToSingle(prompt.userInputText));
+				}
+			}
+			catch (OverflowException)
+			{
+				MessageBox.Show("Number is too big!", "Oops!");
+			}
+
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
         }
@@ -120,14 +142,14 @@ namespace ChemistrySimulator
         
         private void tableButtonClickEvent(object sender, EventArgs e)
         {
-            // Bad approach, need improvement(Only one instance allowed)
-            TableWindow table = new TableWindow();
+			// Bad approach, need improvement(Only one instance allowed)
+			TableWindow table = new TableWindow(defaultBeaker);
             table.Show();
         }
 
         private void configButtonClickEvent(object sender, EventArgs e)
         {
-            ConfigWindow config = new ConfigWindow(this);
+            ConfigWindow config = new ConfigWindow(this, defaultBeaker);
             config.Show();
             this.Hide();
         }
