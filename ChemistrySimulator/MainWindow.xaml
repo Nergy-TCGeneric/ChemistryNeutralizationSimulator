@@ -19,6 +19,10 @@
         <Storyboard x:Key="hideSlidemenu">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-50,0,0,0" DecelerationRatio=".7" Duration="0:0:0.7" />
         </Storyboard>
+
+		<Style TargetType="Label">
+			<Setter Property="FontSize" Value="15" />
+		</Style>
     </Window.Resources>
     
     <Grid Background="{StaticResource Background}">
@@ -56,7 +60,7 @@
                 <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
 
-            <Label Content="Viewer Area" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
+            <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" />
 
             <Grid x:Name="namespace" Grid.Row="1">
                 <Grid.ColumnDefinitions>

@@ -8,9 +8,7 @@ namespace ChemistrySimulator
 {
     public class Reaction
     {
-        // TODO: Hadn't considered concentration - rewrite it
         // Each value for HCl, KOH, NaOH, respectively.
-        // Notice that every ratio eventually represented in simplest interger form.
         private int[] concentrationRatio = new int[3] { 1, 1, 1 };
 
         public void neutralize(Beaker beaker)
@@ -30,5 +28,19 @@ namespace ChemistrySimulator
             }
             */
         }
+
+		public void setConcentrationRatio(int[] ratio) {
+
+			for (int i = 0; i < concentrationRatio.Length; i++) {
+				if (ratio[i] == 0)
+					ratio[i] = 1;
+				concentrationRatio[i] = ratio[i];
+			}
+		}
+
+		public int[] getConcentrationRatio()
+		{
+			return concentrationRatio;
+		}
     }
 }

@@ -11,7 +11,10 @@ namespace ChemistrySimulator
         // H+, Cl-, K+, Na+, OH-, H2O, respectively.
         // All components will be initialized with default value 0
         private float[] beakerComponents = new float[6] { 0, 0, 0, 0, 0, 0 };
+		private int maxVolume = 100;
+		private int standardVolume = 1;
 
+		// TODO: Add arguments into initalizer, make it enable to create instances
         public Beaker()
         {
 
@@ -31,8 +34,8 @@ namespace ChemistrySimulator
 
         // You'll know why i did this when you learn about neutralization reaction...
         public void addBeakerComponent(int component, float amount)
-        {
-            if (amount > 0)
+		{ 
+            if (amount > 0 && getTotalBeakerVolume() < maxVolume)
             {
                 switch (component)
                 {
@@ -87,5 +90,27 @@ namespace ChemistrySimulator
                 }
             }
         }
+
+		public void setMaxVolume(int newVolume)
+		{
+			if (newVolume > 0)
+				maxVolume = newVolume;
+		}
+
+		public int getMaxVolume()
+		{
+			return maxVolume;
+		}
+
+		public void setStandardVolume(int newVolume)
+		{
+			if (newVolume > 0)
+				standardVolume = newVolume;
+		}
+
+		public int getStandardVolume()
+		{
+			return standardVolume;
+		}
     }
 }

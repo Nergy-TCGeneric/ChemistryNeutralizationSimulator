@@ -19,7 +19,7 @@ namespace ChemistrySimulator
     /// </summary>
     public partial class TableWindow : Window
     {
-        public TableWindow()
+        public TableWindow(Beaker beaker)
         {
             InitializeComponent();
         }
