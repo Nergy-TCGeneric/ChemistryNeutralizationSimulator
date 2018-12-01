@@ -54,9 +54,7 @@ namespace ChemistrySimulator
 			try
 			{
 				// Every passed value(propmpt.userInputText) is proved convertible & positive
-				if (prompt.ShowDialog() == true)
-				{
-					defaultBeaker.addBeakerComponent(ChemNotation.ion_H, Convert.ToSingle(prompt.userInputText));
+				if (prompt.ShowDialog() == true) {
 					defaultBeaker.addBeakerComponent(ChemNotation.ion_Cl, Convert.ToSingle(prompt.userInputText));
 				}
 			}
@@ -75,10 +73,8 @@ namespace ChemistrySimulator
 
 			try
 			{
-				if (prompt.ShowDialog() == true)
-				{
+				if (prompt.ShowDialog() == true) {
 					defaultBeaker.addBeakerComponent(ChemNotation.ion_Na, Convert.ToSingle(prompt.userInputText));
-					defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, Convert.ToSingle(prompt.userInputText));
 				}
 			}
 
@@ -97,10 +93,8 @@ namespace ChemistrySimulator
 
 			try
 			{
-				if (prompt.ShowDialog() == true)
-				{
+				if (prompt.ShowDialog() == true) {
 					defaultBeaker.addBeakerComponent(ChemNotation.ion_K, Convert.ToSingle(prompt.userInputText));
-					defaultBeaker.addBeakerComponent(ChemNotation.ion_OH, Convert.ToSingle(prompt.userInputText));
 				}
 			}
 			catch (OverflowException)

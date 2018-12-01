@@ -32,13 +32,14 @@ namespace ChemistrySimulator
             return beakerComponents[component];
         }
 
-        // You'll know why i did this when you learn about neutralization reaction...
         public void addBeakerComponent(int component, float amount)
 		{ 
             if (amount > 0 && getTotalBeakerVolume() < maxVolume)
             {
                 switch (component)
                 {
+                    // Assuming that if Cl is added, and H is also added, too.
+                    // Same on other chemicals.
                     case ChemNotation.ion_Cl:
                         beakerComponents[ChemNotation.ion_H] += amount;
                         beakerComponents[ChemNotation.ion_Cl] += amount;
@@ -51,6 +52,14 @@ namespace ChemistrySimulator
 
                     case ChemNotation.ion_Na:
                         beakerComponents[ChemNotation.ion_Na] += amount;
+                        beakerComponents[ChemNotation.ion_OH] += amount;
+                        break;
+
+                    case ChemNotation.ion_H:
+                        beakerComponents[ChemNotation.ion_H] += amount;
+                        break;
+
+                    case ChemNotation.ion_OH:
                         beakerComponents[ChemNotation.ion_OH] += amount;
                         break;
 
@@ -68,24 +77,26 @@ namespace ChemistrySimulator
                 switch (component)
                 {
                     case ChemNotation.ion_Cl:
-                        beakerComponents[ChemNotation.ion_H] -=
-                            Math.Min(beakerComponents[ChemNotation.ion_Cl], beakerComponents[ChemNotation.ion_H]);
-                        beakerComponents[ChemNotation.ion_Cl] -=
-                            Math.Min(beakerComponents[ChemNotation.ion_Cl], beakerComponents[ChemNotation.ion_H]);
+                        beakerComponents[ChemNotation.ion_H] -= amount;
+                        beakerComponents[ChemNotation.ion_Cl] -= amount;
                         break;
 
                     case ChemNotation.ion_K:
-                        beakerComponents[ChemNotation.ion_K] -=
-                            Math.Min(beakerComponents[ChemNotation.ion_K], beakerComponents[ChemNotation.ion_OH]);
-                        beakerComponents[ChemNotation.ion_OH] -=
-                            Math.Min(beakerComponents[ChemNotation.ion_K], beakerComponents[ChemNotation.ion_OH]);
+                        beakerComponents[ChemNotation.ion_K] -= amount;
+                        beakerComponents[ChemNotation.ion_OH] -= amount;
                         break;
 
                     case ChemNotation.ion_Na:
-                        beakerComponents[ChemNotation.ion_Na] -=
-                            Math.Min(beakerComponents[ChemNotation.ion_Na], beakerComponents[ChemNotation.ion_OH]);
-                        beakerComponents[ChemNotation.ion_OH] -=
-                            Math.Min(beakerComponents[ChemNotation.ion_Na], beakerComponents[ChemNotation.ion_OH]);
+                        beakerComponents[ChemNotation.ion_Na] -= amount;
+                        beakerComponents[ChemNotation.ion_OH] -= amount;
+                        break;
+
+                    case ChemNotation.ion_OH:
+                        beakerComponents[ChemNotation.ion_OH] -= amount;
+                        break;
+
+                    case ChemNotation.ion_H:
+                        beakerComponents[ChemNotation.ion_H] -= amount;
                         break;
                 }
             }
