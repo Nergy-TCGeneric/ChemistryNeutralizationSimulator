@@ -151,6 +151,8 @@ namespace ChemistrySimulator
         {
             linkToGraph();
             linkToTable();
+            GraphWindow.Instance.Show();
+            TableWindow.Instance.Show();
         }
 
         private void clearButtonClickEvent(object sender, EventArgs e)
