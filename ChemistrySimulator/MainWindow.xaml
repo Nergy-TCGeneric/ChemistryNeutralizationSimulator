@@ -44,6 +44,9 @@
                         <Button Name="config" Click="configButtonClickEvent">
                             <Image Source="/images/config.png"/>
                         </Button>
+                        <Button Name="help">
+                            <Image Source="/images/information.png"/>
+                        </Button>
                     </StackPanel>
                 </Grid>
                 <Grid VerticalAlignment="Center" Height="50">

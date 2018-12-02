@@ -133,16 +133,15 @@ namespace ChemistrySimulator
             }
         }
 
+        // Use singleton to prevent unnecessary memory use
         private void graphButtonClickEvent(object sender, EventArgs e)
         {
-            // Bad approach, need improvement(Only one instance allowed)
             GraphWindow graph = new GraphWindow(defaultBeaker);
             graph.Show();
         }
         
         private void tableButtonClickEvent(object sender, EventArgs e)
         {
-			// Bad approach, need improvement(Only one instance allowed)
 			TableWindow table = new TableWindow(defaultBeaker);
             table.Show();
         }
@@ -152,6 +151,12 @@ namespace ChemistrySimulator
             ConfigWindow config = new ConfigWindow(this, defaultBeaker);
             config.Show();
             this.Hide();
+        }
+
+        private void helpButtonClickEvent(object sender, EventArgs e)
+        {
+            helpWindow help = new helpWindow();
+            help.Show();
         }
     }
 }
