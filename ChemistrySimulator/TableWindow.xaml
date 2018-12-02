@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChemistrySimulator"
         mc:Ignorable="d"
         Icon="atom.ico"
-        Title="Chemistry:: Table" Height="450" Width="800">
+        Title="화학I :: 표" Height="450" Width="800">
     <FlowDocumentReader ViewingMode="Scroll">
         <FlowDocument>
             <Table>
@@ -33,7 +33,7 @@
                 <TableRowGroup Style="{StaticResource RowStyle}">
                     <TableRow>
                         <TableCell>
-                            <Paragraph> 'n'th exp. </Paragraph>
+                            <Paragraph> n번째 실험 </Paragraph>
                         </TableCell>
                         <TableCell>
                             <Paragraph>HCl</Paragraph>

@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChemistrySimulator"
         mc:Ignorable="d"
-        Title="helpWindow" Height="450" Width="800">
+        Icon="atom.ico"
+        Title="도움말"
+        Height="666" Width="1200">
     <Grid>
-        
+        <Image Source="/images/help.png" />
     </Grid>
 </Window>

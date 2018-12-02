@@ -17,8 +17,8 @@
         <Label Name="question"> Question area </Label>
         <TextBox Grid.Row="1" Name="userInput"> Default answer </TextBox>
         <WrapPanel Grid.Row="2" HorizontalAlignment="Right">
-            <Button Name="OK" IsDefault="True" Click="OKBtn_Click"> OK </Button>
-            <Button Name="Cancel" IsCancel="True"> Cancel </Button>
+            <Button Name="OK" IsDefault="True" Click="OKBtn_Click"> 확인 </Button>
+            <Button Name="Cancel" IsCancel="True"> 취소 </Button>
         </WrapPanel>
     </Grid>
 </Window>

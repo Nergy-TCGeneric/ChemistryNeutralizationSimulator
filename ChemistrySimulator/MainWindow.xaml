@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChemistrySimulator"
         mc:Ignorable="d"
-        Title="Chemistry:: neutralization simulator" Height="450" Width="800">
+        Title="화학I :: 중화반응 시뮬레이터" Height="450" Width="800">
 
     <Window.Resources>
         <Brush x:Key="Background">#F2F2F2</Brush>
@@ -44,7 +44,7 @@
                         <Button Name="config" Click="configButtonClickEvent">
                             <Image Source="/images/config.png"/>
                         </Button>
-                        <Button Name="help">
+                        <Button Name="help" Click="helpButtonClickEvent">
                             <Image Source="/images/information.png"/>
                         </Button>
                     </StackPanel>

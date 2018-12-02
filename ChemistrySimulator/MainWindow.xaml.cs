@@ -80,7 +80,7 @@ namespace ChemistrySimulator
 
         private void HClBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
-            UserInputPrompt prompt = new UserInputPrompt("How Much?");
+            UserInputPrompt prompt = new UserInputPrompt("얼마나 넣을 건가요?");
 
 			try
 			{
@@ -91,7 +91,7 @@ namespace ChemistrySimulator
 			}
 			catch (OverflowException)
 			{
-				MessageBox.Show("Number is too big!", "Oops!");
+				MessageBox.Show("수가 너무 큽니다!", "이런!");
 			}
 
             renewBeakerStatus();
@@ -100,7 +100,7 @@ namespace ChemistrySimulator
 
         private void NaOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
         {
-            UserInputPrompt prompt = new UserInputPrompt("How much?");
+            UserInputPrompt prompt = new UserInputPrompt("얼마나 넣을 건가요?");
 
 			try
 			{
@@ -111,7 +111,7 @@ namespace ChemistrySimulator
 
 			catch (OverflowException)
 			{
-				MessageBox.Show("Number is too big!", "Oops!");
+				MessageBox.Show("수가 너무 큽니다!", "이런!");
 			}
 
             renewBeakerStatus();
@@ -120,7 +120,7 @@ namespace ChemistrySimulator
 
         private void KOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e )
         {
-            UserInputPrompt prompt = new UserInputPrompt("How much?");
+            UserInputPrompt prompt = new UserInputPrompt("얼마나 넣을 건가요?");
 
 			try
 			{
@@ -130,7 +130,7 @@ namespace ChemistrySimulator
 			}
 			catch (OverflowException)
 			{
-				MessageBox.Show("Number is too big!", "Oops!");
+				MessageBox.Show("수가 너무 큽니다!", "이런!");
 			}
 
             renewBeakerStatus();

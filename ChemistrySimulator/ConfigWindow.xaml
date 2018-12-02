@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChemistrySimulator"
         mc:Ignorable="d"
-        Title="Config menu" Height="200" Width="400">
+        Icon="atom.ico"
+        Title="설정" Height="200" Width="400">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto" />
@@ -17,7 +18,7 @@
 		</Grid.RowDefinitions>
 
 		<Label FontWeight="DemiBold" FontSize="16">
-			Program configuration
+			프로그램 설정
 		</Label>
 		
 		<StackPanel Grid.Row="1">
@@ -32,7 +33,7 @@
 					<ColumnDefinition Width="auto" />
 				</Grid.ColumnDefinitions>
 
-				<Label>Concentration among HCl : NaOH : KOH</Label>
+                <Label>HCl : NaOH : KOH 간 농도비</Label>
 				<TextBox Grid.Column="2" Name="HClConcentrate" Width="25" HorizontalContentAlignment="Right">1</TextBox>
 				<Label Grid.Column="3">:</Label>
 				<TextBox Grid.Column="4" Width="25" HorizontalContentAlignment="Right" Name="NaOHConcentrate">1</TextBox>
@@ -50,7 +51,7 @@
 					<ColumnDefinition Width="auto" />
 				</Grid.ColumnDefinitions>
 
-				<Label>Define standard volume</Label>
+                <Label>단위부피 정의</Label>
 				<TextBox Grid.Column="2" HorizontalContentAlignment="Right" Name="standardVolume">1</TextBox>
 				<Label Grid.Column="3">mL</Label>
 			</Grid>
@@ -65,13 +66,13 @@
 					<ColumnDefinition Width="auto" />
 				</Grid.ColumnDefinitions>
 
-				<Label>Maximum beaker volume</Label>
+                <Label>비커 최대 부피 정의</Label>
 				<TextBox Grid.Column="2" Name="maxBeakerVolume" HorizontalContentAlignment="Right"> 100 </TextBox>
 				<Label Grid.Column="3"> mL </Label>
 			</Grid>
 		</StackPanel>
 
-		<Label Grid.Row="4" HorizontalContentAlignment="Center" FontWeight="DemiBold">Be careful : Only INTEGER ratio will be accepted.</Label>
+        <Label Grid.Row="4" HorizontalContentAlignment="Center" FontWeight="DemiBold">농도비는 정수비만 허용하며, 그 외는 정상 작동하지 않습니다.</Label>
 
 			<StackPanel Grid.Row="5">
 			<Grid>
@@ -80,9 +81,9 @@
 					<ColumnDefinition Width="auto" />
 					<ColumnDefinition Width="auto" />
 				</Grid.ColumnDefinitions>
-				
-				<Button Width="70" HorizontalAlignment="Right" Grid.Column="1" Click="onOKBtnClickEvent" IsDefault="True">Ok</Button>
-				<Button Width="70" HorizontalAlignment="Right" Grid.Column="2" IsCancel="True">Cancel</Button>
+
+                <Button Width="70" HorizontalAlignment="Right" Grid.Column="1" Click="onOKBtnClickEvent" IsDefault="True">확인</Button>
+                <Button Width="70" HorizontalAlignment="Right" Grid.Column="2" IsCancel="True">취소</Button>
 			</Grid>
 		</StackPanel>
 	</Grid>
