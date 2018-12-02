@@ -19,8 +19,22 @@ namespace ChemistrySimulator
     /// </summary>
     public partial class TableWindow : Window
     {
+        private static TableWindow instance = null;
+
+        public static TableWindow Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new TableWindow(MainWindow.Instance.getBeakerInstance());
+                return instance;
+            }
+        }
+
         public TableWindow(Beaker beaker)
         {
+            instance = this;
+            Closed += closeEvent;
             InitializeComponent();
         }
 
@@ -35,6 +49,10 @@ namespace ChemistrySimulator
             for(int i=0;i<ionAmount.Length;i++) {
                 currentRow.Cells.Add(new TableCell(new Paragraph(new Run(ionAmount[i].ToString() + "N"))));
             }
+        }
+
+        private void closeEvent(object sender, EventArgs e) {
+            instance = null;
         }
     }
 }

@@ -25,16 +25,16 @@ namespace ChemistrySimulator
 				float OH_by_Na = OH - OH_by_K;
 				
 				// Need to optimize those algorithms..
-                if(H/reactionRatio[0] > OH_by_K/reactionRatio[1] + OH_by_K/reactionRatio[2])
+                if(H/reactionRatio[0] > OH_by_K/reactionRatio[1] + OH_by_Na/reactionRatio[2])
                 {
-                    beaker.removeBeakerComponent(ChemNotation.ion_H, H - H / reactionRatio[0]);
+                    beaker.removeBeakerComponent(ChemNotation.ion_H, H - (H / reactionRatio[0] - (OH_by_K/reactionRatio[1] + OH_by_Na/reactionRatio[2])));
                     beaker.removeBeakerComponent(ChemNotation.ion_OH, OH);
                     beaker.addBeakerComponent(ChemNotation.H2O, OH);
                 }
                 else
                 {
                     beaker.removeBeakerComponent(ChemNotation.ion_H, H);
-                    beaker.removeBeakerComponent(ChemNotation.ion_OH, OH - (OH_by_K / reactionRatio[1] + OH_by_Na / reactionRatio[2]));
+                    beaker.removeBeakerComponent(ChemNotation.ion_OH, OH - (OH_by_K / reactionRatio[1] + OH_by_Na / reactionRatio[2] - H / reactionRatio[0]));
                     beaker.addBeakerComponent(ChemNotation.H2O, H);
                 }
             }

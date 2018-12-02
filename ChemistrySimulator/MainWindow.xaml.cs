@@ -25,14 +25,41 @@ namespace ChemistrySimulator
         // For testing purpose. Using default instance instead
         Beaker defaultBeaker = new Beaker();
 
+        private static MainWindow instance = null;
+
+        public static MainWindow Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new MainWindow();
+                return instance;
+            }
+        }
+
         public MainWindow()
         {
+            instance = this;
+            Closed += windowCloseEvent;
             InitializeComponent();
+        }
+
+        public Beaker getBeakerInstance() {
+            return defaultBeaker;
         }
 
         // TODO: Text wraping required
         private void renewBeakerStatus() {
             BeakerStatus.Content = defaultBeaker.getTotalBeakerVolume().ToString() + " mL";
+        }
+
+        private void linkToGraph() {
+            for (int i = 0; i < 5; i++)
+                GraphWindow.Instance.AddValue(i, defaultBeaker.getComponentVolume(i));
+        }
+
+        private void linkToTable() {
+
         }
 
         private void Beaker_MouseEnterEvent(object sender, MouseEventArgs e)
@@ -65,6 +92,7 @@ namespace ChemistrySimulator
 
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
+            linkToGraph();
         }
 
         private void NaOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
@@ -85,6 +113,7 @@ namespace ChemistrySimulator
 
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
+            linkToGraph();
         }
 
         private void KOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e )
@@ -104,6 +133,7 @@ namespace ChemistrySimulator
 
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
+            linkToGraph();
         }
 
         private void showButtonClickEvent(object sender, EventArgs e)
@@ -136,14 +166,12 @@ namespace ChemistrySimulator
         // Use singleton to prevent unnecessary memory use
         private void graphButtonClickEvent(object sender, EventArgs e)
         {
-            GraphWindow graph = new GraphWindow(defaultBeaker);
-            graph.Show();
+            GraphWindow.Instance.Show();
         }
         
         private void tableButtonClickEvent(object sender, EventArgs e)
         {
-			TableWindow table = new TableWindow(defaultBeaker);
-            table.Show();
+            TableWindow.Instance.Show();
         }
 
         private void configButtonClickEvent(object sender, EventArgs e)
@@ -157,6 +185,10 @@ namespace ChemistrySimulator
         {
             helpWindow help = new helpWindow();
             help.Show();
+        }
+
+        private void windowCloseEvent(object sender, EventArgs e) {
+            instance = null;
         }
     }
 }
