@@ -14,7 +14,6 @@ namespace ChemistrySimulator
 		private int maxVolume = 100;
 		private int standardVolume = 1;
 
-		// TODO: Add arguments into initalizer, make it enable to create instances
         public Beaker()
         {
 
@@ -123,5 +122,9 @@ namespace ChemistrySimulator
 		{
 			return standardVolume;
 		}
+
+        public void resetBeaker() {
+            beakerComponents = new float[6] { 0, 0, 0, 0, 0, 0 };
+        }
     }
 }

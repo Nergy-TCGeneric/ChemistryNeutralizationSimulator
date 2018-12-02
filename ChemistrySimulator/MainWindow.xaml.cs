@@ -59,7 +59,11 @@ namespace ChemistrySimulator
         }
 
         private void linkToTable() {
-
+            TableWindow.Instance.createTableCell(new float[5] { defaultBeaker.getComponentVolume(ChemNotation.ion_Cl),
+                                                                defaultBeaker.getComponentVolume(ChemNotation.ion_Na),
+                                                                defaultBeaker.getComponentVolume(ChemNotation.ion_K),
+                                                                defaultBeaker.getComponentVolume(ChemNotation.H2O),
+                                                                defaultBeaker.getTotalBeakerVolume() });
         }
 
         private void Beaker_MouseEnterEvent(object sender, MouseEventArgs e)
@@ -92,7 +96,6 @@ namespace ChemistrySimulator
 
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
-            linkToGraph();
         }
 
         private void NaOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e)
@@ -113,7 +116,6 @@ namespace ChemistrySimulator
 
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
-            linkToGraph();
         }
 
         private void KOHBeaker_LeftMouseDownEvent(object sender, MouseButtonEventArgs e )
@@ -133,7 +135,6 @@ namespace ChemistrySimulator
 
             renewBeakerStatus();
             defaultBeaker.neutralize(defaultBeaker);
-            linkToGraph();
         }
 
         private void showButtonClickEvent(object sender, EventArgs e)
@@ -144,6 +145,18 @@ namespace ChemistrySimulator
         private void hideButtonClickEvent(object sender, EventArgs e)
         {
             showHideMenu("hideSlidemenu", hideButton, showButton, slidemenu);
+        }
+
+        private void verifiedButtonClickEvent(object sender, EventArgs e)
+        {
+            linkToGraph();
+            linkToTable();
+        }
+
+        private void clearButtonClickEvent(object sender, EventArgs e)
+        {
+            defaultBeaker.resetBeaker();
+            renewBeakerStatus();
         }
 
         private void showHideMenu(string storyboard, Button hideBtn, Button showBtn, StackPanel pnl)
