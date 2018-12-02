@@ -36,19 +36,19 @@
                             <Paragraph> 'n'th exp. </Paragraph>
                         </TableCell>
                         <TableCell>
-                            <Paragraph>H+</Paragraph>
+                            <Paragraph>HCl</Paragraph>
                         </TableCell>
                         <TableCell>
-                            <Paragraph>Cl-</Paragraph>
+                            <Paragraph>NaOH</Paragraph>
                         </TableCell>
                         <TableCell>
-                            <Paragraph>K+</Paragraph>
+                            <Paragraph>KOH</Paragraph>
                         </TableCell>
                         <TableCell>
-                            <Paragraph>Na+</Paragraph>
+                            <Paragraph>H2O</Paragraph>
                         </TableCell>
                         <TableCell>
-                            <Paragraph>OH-</Paragraph>
+                            <Paragraph>All.</Paragraph>
                         </TableCell>
                     </TableRow>
                 </TableRowGroup>

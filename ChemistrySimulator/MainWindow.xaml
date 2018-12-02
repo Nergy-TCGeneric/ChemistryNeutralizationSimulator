@@ -44,6 +44,9 @@
                         <Button Name="config" Click="configButtonClickEvent">
                             <Image Source="/images/config.png"/>
                         </Button>
+                        <Button Name="help">
+                            <Image Source="/images/information.png"/>
+                        </Button>
                     </StackPanel>
                 </Grid>
                 <Grid VerticalAlignment="Center" Height="50">
@@ -55,14 +58,22 @@
 
         <Grid x:Name="Viewer" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="6*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="5*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
 
-            <Label VerticalAlignment="Center" HorizontalContentAlignment="Center" />
-
-            <Grid x:Name="namespace" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Height="auto" HorizontalAlignment="Right">
+                <Button Name="ok" Width="40" Height="40" Click="verifiedButtonClickEvent">
+                    <Image Source="/images/check-mark.png"/>
+                </Button>
+                <Button Name="clear" Width="40" Height="40" Click="clearButtonClickEvent">
+                    <Image Source="/images/rubbish-bin.png"/>
+                </Button>
+            </StackPanel>
+            
+            <Grid x:Name="namespace" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="3*" />
@@ -88,7 +99,7 @@
                 </Grid>
             </Grid>
             
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="3*" />

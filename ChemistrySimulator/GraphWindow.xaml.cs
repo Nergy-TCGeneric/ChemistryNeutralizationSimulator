@@ -22,8 +22,23 @@ namespace ChemistrySimulator
     /// </summary>
     public partial class GraphWindow : Window
     {
+        private static GraphWindow instance = null;
+
+        public static GraphWindow Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new GraphWindow(MainWindow.Instance.getBeakerInstance());
+                return instance;
+            }
+        }
+
         public GraphWindow(Beaker beaker)
         {
+            instance = this;
+            Closed += closeEvent;
+
             InitializeComponent();
             SeriesCollection = new SeriesCollection
             {
@@ -73,6 +88,10 @@ namespace ChemistrySimulator
 
         public void AddValue(int ChemNotation, float Value) {
             SeriesCollection[ChemNotation].Values.Add(new ObservableValue(Value));
+        }
+
+        private void closeEvent(object sender, EventArgs e) {
+            instance = null;
         }
     }
 }

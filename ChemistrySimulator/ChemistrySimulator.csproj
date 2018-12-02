@@ -72,6 +72,9 @@
     <Compile Include="GraphWindow.xaml.cs">
       <DependentUpon>GraphWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="helpWindow.xaml.cs">
+      <DependentUpon>helpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reaction.cs" />
     <Compile Include="TableWindow.xaml.cs">
       <DependentUpon>TableWindow.xaml</DependentUpon>
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GraphWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="helpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +152,13 @@
     <Resource Include="images\statistics.png" />
     <Resource Include="images\table-grid.png" />
     <Resource Include="images\writing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\check-mark.png" />
+    <Resource Include="images\rubbish-bin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -19,22 +19,42 @@ namespace ChemistrySimulator
     /// </summary>
     public partial class TableWindow : Window
     {
+        private static TableWindow instance = null;
+        private int experimentCount;
+
+        public static TableWindow Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new TableWindow(MainWindow.Instance.getBeakerInstance());
+                return instance;
+            }
+        }
+
         public TableWindow(Beaker beaker)
         {
+            instance = this;
+            Closed += closeEvent;
             InitializeComponent();
         }
 
         // Follow the order describled at 'ChemicalNotation' class.
-        public void createTableCell(int experiCount, float[] ionAmount)
+        public void createTableCell(float[] ionAmount)
         {
+            experimentCount++;
             ChemistryTable.Rows.Add(new TableRow());
             TableRow currentRow = ChemistryTable.Rows[ChemistryTable.Rows.Count - 1];
 
-            // TODO: For readability, different background color for expericount rows are required.
-            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(experiCount.ToString()))));
+            // TODO: For readability, different background color for experimentCount rows are required.
+            currentRow.Cells.Add(new TableCell(new Paragraph(new Run(experimentCount.ToString()))));
             for(int i=0;i<ionAmount.Length;i++) {
                 currentRow.Cells.Add(new TableCell(new Paragraph(new Run(ionAmount[i].ToString() + "N"))));
             }
+        }
+
+        private void closeEvent(object sender, EventArgs e) {
+            instance = null;
         }
     }
 }
